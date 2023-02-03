@@ -4,6 +4,7 @@ import {
   selectCurrentArticle,
   isLoadingCurrentArticle,
 } from './currentArticleSlice.js';
+import FullArticle from '../../components/FullArticle.jsx';
 
 const CurrentArticle = () => {
   const article = useSelector(selectCurrentArticle);
