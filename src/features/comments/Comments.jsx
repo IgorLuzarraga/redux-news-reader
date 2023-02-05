@@ -13,18 +13,33 @@ const Comments = () => {
   const dispatch = useDispatch();
   const article = useSelector(selectCurrentArticle);
   // Declare additional selected data here.
-  const comments = [];
-  const commentsAreLoading = false;
-
-  // Dispatch loadCommentsForArticleId with useEffect here.
+  //const comments = [];
+  const comments = useSelector(selectComments)
+  //const commentsAreLoading = false;
+  const commentsAreLoading = useSelector(isLoadingComments);
 
   if (commentsAreLoading) return <div>Loading Comments</div>;
   if (!article) return null;
 
+  let commentsForArticleId = []
+  if (!article) {
+    commentsForArticleId = []
+  } else {
+    commentsForArticleId = comments[article.id]
+  }
+
+  //console.log("commentsForArticleId: ", commentsForArticleId)
+  
+  // //Dispatch loadCommentsForArticleId with useEffect here.
+  //  useEffect(() => {
+  //   dispatch(loadCommentsForArticleId(article.id))
+  // }, [article, dispatch])
+
   return (
     <div className='comments-container'>
       <h3 className='comments-title'>Comments</h3>
-      <CommentList comments={[]} />
+      <CommentList comments={commentsForArticleId} />
+      {/* <CommentList comments={[]} /> */}
       <CommentForm articleId={article.id} />
     </div>
   );

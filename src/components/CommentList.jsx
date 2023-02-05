@@ -8,7 +8,12 @@ export default function CommentList({ comments }) {
   
   return (
     <ul className='comments-list'>
-      
+      {renderComment(comments)}
     </ul>
   );
 }
+
+const renderComment = (comments) =>
+  comments.map(comment => {
+    return <li><Comment comment={comment} /></li>
+  })

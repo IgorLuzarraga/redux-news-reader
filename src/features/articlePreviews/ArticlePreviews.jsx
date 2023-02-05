@@ -6,6 +6,7 @@ import {
   isLoading,
 } from './articlePreviewsSlice.js'
 import { loadCurrentArticle } from '../currentArticle/currentArticleSlice'
+import { loadCommentsForArticleId } from '../comments/commentsSlice'
 import ArticleListItem from '../../components/ArticleListItem';
 
 const ArticlePreviews = () => {
@@ -26,13 +27,30 @@ const ArticlePreviews = () => {
       <section className='articles-container'>
         <h2 className='section-title'>All Articles</h2>
         {articlePreviews.map((article) => (
-          <div key={article.id} onClick={(e) => dispatch(loadCurrentArticle(article.id))}>
+          <div key={article.id} onClick={(e) => {
+              dispatch(loadCurrentArticle(article.id))
+              dispatch(loadCommentsForArticleId(article.id))
+            }
+          }>
+          
             <ArticleListItem article={article} />
           </div>
         ))}
       </section>
     </>
   );
+  // return (
+  //   <>
+  //     <section className='articles-container'>
+  //       <h2 className='section-title'>All Articles</h2>
+  //       {articlePreviews.map((article) => (
+  //         <div key={article.id} onClick={(e) => dispatch(loadCurrentArticle(article.id))}>
+  //           <ArticleListItem article={article} />
+  //         </div>
+  //       ))}
+  //     </section>
+  //   </>
+  // );
 };
 
 export default ArticlePreviews;

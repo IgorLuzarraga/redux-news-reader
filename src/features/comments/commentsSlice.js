@@ -5,11 +5,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const loadCommentsForArticleId = createAsyncThunk(
   'comments/loadCommentsForArticleId',
   async (articleId) => {
-    const response = await fetch('api/articles/${articleId}/comments');
+    const response = await fetch(`api/articles/${articleId}/comments`); 
     const json = await response.json();
     return json;
   }
 );
+
 
 // Create postCommentForArticleId here.
 export const postCommentForArticleId = createAsyncThunk(

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function FullArticle({ article }) {
-  console.log("article: ", article)
   return (
     <>
       <div className='article-full-image-container'>
