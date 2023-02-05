@@ -341,6 +341,26 @@ At this point, you should be able to create new comments with the comment form. 
 
 
 Stuck? Get a hint
+---------------------------------
+To import postCommentForArticleId, add it to the import statement that includes createCommentIsPending.
+
+To dispatch your asynchronous action, you will write code that looks like this:
+
+dispatch(
+  asynchronousActionCreator({
+    /* action creator arguments here*/
+  })
+)
+
+
+
+ const handleSubmit = (e) => {
+    e.preventDefault();
+    // dispatch your asynchronous action here!
+    dispatch(postCommentForArticleId({articleId, comment}))
+    setComment('');
+  };
+--------------------------------
 16.
 Good job! Your last task is to improve the user experience slightly by disabling the submit button when a request to create a new comment is pending. This will prevent users from accidentally creating the same comment twice.
 
