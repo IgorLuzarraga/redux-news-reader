@@ -18,7 +18,7 @@ export const postCommentForArticleId = createAsyncThunk(
   async ({articleId, comment}) => {
     const requestBody = JSON.stringify({comment: comment});
 
-    const response = await fetch('api/articles/${articleId}/comments', {
+    const response = await fetch(`api/articles/${articleId}/comments`, {
       method: 'POST',
       body: requestBody
     });
